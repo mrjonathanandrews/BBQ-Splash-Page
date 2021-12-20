@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="Jonathan Andrews">
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;900&display=swap" rel="stylesheet"> 
+    </head>
+    <body>
+        <div class="intro">
+            <h1>Learn how to make <strong>the best BBQ ribs</strong> in town</h1>
+            <p>Join us for this live webinar</p>
+            <p class="top-text">Mouthwateringly Delicious</p>
+        </div>
+
+        <div id="main-content" class="main-content">
+            <h2>Become a BBQ master</h2>
+            <p>Register today</p>
+            <p>BBQ isn't just standing in front of your grill with it on full blast and hoping for the best. It's an art! One way to speed up the process is to learn from the best. You can do just that by signing up for this free webinar!</p>
+            <!-- Form -->
+            <form id="email-collector" class="email-collector" action="#" method="POST">
+                    <input name="firstName" aria-label="first name" class="fname" type="text" required placeholder="first name">
+                    <input name="emailAddress" aria-label="email" class="email" type="text" required placeholder="email">
+                    <button class="btn-primary" type="submit">Register</button>
+            </form>
+            <p class="fine-print">We'll never share your information without your permission</p>
+        </div>
+
+        <script>
+            let emailCollectorForm = document.getElementById("email-collector")
+            emailCollectorForm.addEventListener("submit", event => {
+                event.preventDefault()
+
+                let ourFormData = new FormData(event.target)
+
+                let userFirstName = ourFormData.get("firstName")
+                let userEmail = ourFormData.get("emailAddress")
+
+                let updatedHtmlContent = `
+                    <h2>Congratulations, ${userFirstName}!</h2>
+                    
+                    <p>You are on your way to becoming a BBQ master!</p>
+                    
+                    <p class="fine-print">You will get weekly BBQ tips sent to: ${userEmail}</p>
+                `
+                let updatedContentContainer = document.getElementById("main-content")
+                updatedContentContainer.innerHTML = updatedHtmlContent
+            })
+        </script>
+    </body>
+</html>
